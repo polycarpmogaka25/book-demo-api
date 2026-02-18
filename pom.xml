@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
     <groupId>com.kcb</groupId>
-    <artifactId>books-api</artifactId>
+    <artifactId>books-api-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>books-api</name>
     <description>books-api-demo</description>
@@ -33,11 +33,11 @@
     </properties>
     <dependencies>
 		<!---Masking Dependency -->
-<!--		<dependency>-->
-<!--			<groupId>com.kcb</groupId>-->
-<!--			<artifactId>masking</artifactId>-->
-<!--			<version>${masking.version}</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>com.kcb</groupId>
+			<artifactId>p11-masking-spring-boot-starter</artifactId>
+			<version>${masking.version}</version>
+		</dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
