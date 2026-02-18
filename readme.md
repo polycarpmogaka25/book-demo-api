@@ -40,7 +40,7 @@ spring:
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
-    username: sa
+    username:  kcb-book
     password: 
     platform: h2
   h2:
