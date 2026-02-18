@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/books")
 @RequiredArgsConstructor
+@Slf4j
 @Tag(name = "Books api", description = "Operations related to Books and their associated Tasks")
 public class BooksController {
 
@@ -29,6 +31,7 @@ public class BooksController {
     @ApiResponse(responseCode = "200", description = "Book created successfully")
     @ApiResponse(responseCode = "400", description = "Invalid input data")
     public ResponseEntity<Book> create(@Valid @RequestBody BookDto request) {
+        log.debug("Request to create a book : {}", request);
         return ResponseEntity.ok(bookService.create(request));
     }
 

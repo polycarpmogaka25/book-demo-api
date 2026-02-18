@@ -14,3 +14,12 @@ spring:
     console:
       enabled: true
 
+p11:
+  masking:
+    enabled: true
+    fields:
+      - email
+      - phoneNumber
+    mask-style: PARTIAL
+    mask-character: "*"
+

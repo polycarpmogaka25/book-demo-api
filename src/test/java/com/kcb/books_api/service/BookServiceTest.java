@@ -2,6 +2,7 @@ package com.kcb.books_api.service;
 
 import com.kcb.books_api.entity.Book;
 import com.kcb.books_api.exception.ResourceNotFoundException;
+import com.kcb.books_api.model.BookDto;
 import com.kcb.books_api.repo.BookRepo;
 import com.kcb.books_api.sevice.BookServiceImpl;
 import org.junit.jupiter.api.Assertions;
@@ -30,6 +31,45 @@ class BookServiceTest {
         doNothing().when(repo).deleteById(anyLong());
         bookService.delete(id);
         verify(repo, times(1)).deleteById(id);
+    }
+
+    @Test
+    void test_create_book() {
+        var rawEmail = "senior.dev@kcbgroup.com";
+        var rawPhone = "0711223344";
+
+        var request = BookDto.builder()
+                .title("Spring Boot Mastery")
+                .author("John Doe")
+                .email(rawEmail)
+                .phoneNumber(rawPhone)
+                .build();
+
+        when(repo.save(any(Book.class))).thenAnswer(i -> i.getArguments()[0]);
+        var result = bookService.create(request);
+        Assertions.assertNotNull(result);
+
+    }
+
+    @Test
+    void test_update_book() {
+        String rawEmail = "senior.dev@kcbgroup.com";
+        String rawPhone = "0711223344";
+
+        var request = BookDto.builder()
+                .title("Spring Boot Mastery")
+                .author("John Doe")
+                .email(rawEmail)
+                .phoneNumber(rawPhone)
+                .build();
+
+        when(repo.findById(1L)).thenReturn(Optional.of(getBook()));
+
+        var result = bookService.update(1L, request);
+
+        Assertions.assertNull(result);
+
+
     }
 
     @Test
